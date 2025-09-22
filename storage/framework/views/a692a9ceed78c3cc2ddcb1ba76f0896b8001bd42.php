@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hexzy - Responsive Admin Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="ThemeDesign" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" href="<?php echo e(asset('assets/images/favicon.png')); ?>">
+    <link href="<?php echo e(asset('assets/css/bootstrap.min.css')); ?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo e(asset('assets/css/icons.css')); ?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo e(asset('assets/css/style.css')); ?>" rel="stylesheet" type="text/css">
+        <!-- jQuery  -->
+    <script src="<?php echo e(asset('assets/js/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/bootstrap.bundle.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/modernizr.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/detect.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/fastclick.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/jquery.slimscroll.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/jquery.blockUI.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/waves.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/wow.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/jquery.nicescroll.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/jquery.scrollTo.min.js')); ?>"></script>
+  </head>
+  <body>
+    <!-- Begin page -->
+    <div class="accountbg"></div>
+    <div class="wrapper-page">
+      <div class="card card-pages">
+
+        <div class="card-body">
+          <div class="text-center m-t-0 m-b-15">
+            <a href="<?php echo e(url('dashboard')); ?>" class="logo logo-admin">Security Head Office</a>
+          </div>
+          <h4 class="text-muted text-center m-t-0"><b>Sign In</b></h4>
+          <form class="form-horizontal m-t-20" id="f-login">
+            <?php echo csrf_field(); ?>
+            <div class="form-group">
+              <div class="col-12">
+                <input class="form-control" type="text" name="username" id="username" placeholder="Username">
+                <span class="invalid-feedback" id="username-error"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-12">
+                <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+                <span class="invalid-feedback" id="password-error"></span>
+              </div>
+            </div>
+            <div class="form-group text-center m-t-40">
+              <div class="col-12">
+                <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="button" id="btn-login">Log In</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      $('#btn-login').click(function() {
+        $(".invalid-feedback").hide();
+        $("input, select").removeClass("is-invalid");
+        $.post("<?php echo e(url('login')); ?>", $("#f-login").serialize()).done((res) => {
+          window.location.href = "<?php echo e(url('dashboard')); ?>";
+        }).fail((res) => {
+          setErrorValidation(res);
+        });
+      });
+    </script>
+    <script src="<?php echo e(asset('assets/js/app.js')); ?>"></script>
+    <script src="<?php echo e(asset('scripts/secptmho.js')); ?>"></script>
+  </body>
+</html>
+<?php /**PATH /home/u543412378/domains/secptmho.online/public_html/resources/views/login.blade.php ENDPATH**/ ?>
